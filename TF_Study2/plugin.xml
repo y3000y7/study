@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="Editor"
+            default="false"
+            extensions="chris"
+            id="editor"
+            name="chris editor">
+      </editor>
+   </extension>
+   <extension
+         id="builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="false"
+            isConfigurable="false">
+         <run
+               class="Builder">
+         </run></builder>
+   </extension>
+   <extension
+         id="nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="Nature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.projectConfigure?after=additions">
+         <command
+               commandId="command"
+               label="add nature"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="Handler"
+            id="command"
+            name="add nature">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="Handler"
+            commandId="command">
+      </handler>
+   </extension>
+   <extension
+         id="marker"
+         point="org.eclipse.core.resources.markers">
+      <persistent
+            value="false">
+      </persistent>
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+   </extension>
+
+</plugin>
